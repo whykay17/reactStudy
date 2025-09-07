@@ -1,26 +1,38 @@
-type IssueCardProps = {
-  title : string;
-  assignedTo : string;
-  priority : "low" | "medium" | "high";
-}
+import type { Issue } from "./types";
 
-export function IssueCard({title, assignedTo, priority} : IssueCardProps) {
-
+export function IssueCard({
+  issue,
+  onMove,
+  onDelete,
+}: {
+  issue: Issue;
+  onMove: (id: string, status: Issue["status"]) => void;
+  onDelete: (id: string) => void;
+}) {
   return (
     <div
       style={{
+        padding: 8,
         border: "1px solid #ddd",
-        borderRadius: "8px",
-        padding: "8px",
-        marginBottom: "8px",
-        background: "red",
+        marginBottom: 8,
+        borderRadius: 8,
       }}
     >
-      <h2>{title}</h2>
-      <p>Asigned to: {assignedTo}</p>
-      <p>Priority: {priority}</p>
-
+      <strong>{issue.title}</strong>
+      <div style={{ marginTop: 8 }}>
+        {issue.status !== "backlog" && (
+          <button onClick={() => onMove(issue.id, "backlog")}>Backlog</button>
+        )}
+        {issue.status !== "inprogress" && (
+          <button onClick={() => onMove(issue.id, "inprogress")}>
+            In Progress
+          </button>
+        )}
+        {issue.status !== "done" && (
+          <button onClick={() => onMove(issue.id, "done")}>Done</button>
+        )}
+        <button onClick={() => onDelete(issue.id)}>Delete</button>
+      </div>
     </div>
-  )
+  );
 }
-
