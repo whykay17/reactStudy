@@ -1,7 +1,7 @@
 export type Issue = {
     id:string;
     title:string;
-    status: 'backlog' | 'inprogress' | 'done';
+    status: 'Backlog' | 'In-Progress' | 'Done';
     assignee?: string;
     priority?: 'low' | 'med' | 'high';
 }

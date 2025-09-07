@@ -1,24 +1,24 @@
 import { Column } from "./Column";
 import type { Issue } from "../issues/types";
-import { useState } from "react";
+import { useLocalStorage } from "../../lib/useLocalStorage";
 
 export function Board() {
-  const [issues, setIssues] = useState<Issue[]>([
+  const [issues, setIssues] = useLocalStorage<Issue[]>("issues",[
     {
       id: crypto.randomUUID(),
       title: "Setup project skeleton",
       assignee: "Alice",
       priority: "low",
-      status: "backlog",
+      status: "Backlog",
     },
     {
       id: crypto.randomUUID(),
       title: "Add routing",
       assignee: "Bob",
       priority: "high",
-      status: "inprogress",
+      status: "In-Progress",
     },
-  ]);
+  ])
 
   function addIssue(title: string, assignee: string, priority: Issue['priority']) {
     const newIssue: Issue = {
@@ -26,7 +26,7 @@ export function Board() {
       title,
       assignee,
       priority,
-      status: 'backlog'
+      status: 'Backlog'
     };
     setIssues((prev) => [newIssue, ...prev]);
   }
@@ -51,7 +51,7 @@ export function Board() {
         minHeight: "100vh",
       }}
     >
-      {['backlog', 'inprogress', 'done'].map((col) => (
+      {['Backlog', 'In-Progress', 'Done'].map((col) => (
         <Column 
           key={col}
           title= {col as Issue['status']}
