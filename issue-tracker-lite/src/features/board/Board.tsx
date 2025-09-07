@@ -1,8 +1,11 @@
 import { Column } from "./Column";
 import type { Issue } from "../issues/types";
 import { useLocalStorage } from "../../lib/useLocalStorage";
+import { useState } from "react";
 
 export function Board() {
+  const [newTitle, setNewTitle] = useState("");
+  const [newAssignee, setNewAssignee] = useState("");
   const [issues, setIssues] = useLocalStorage<Issue[]>("issues",[
     {
       id: crypto.randomUUID(),
@@ -41,7 +44,20 @@ export function Board() {
   }
 
   return (<>
-    < button onClick={() => addIssue("New Issue", "Charlie", "med")}>Add Random Issue</button>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "8px",
+        padding: "16px",
+      }}
+    >
+      <input type="text" placeholder="Title" id="new-issue-title" value={newTitle} onChange={e => setNewTitle(e.target.value)}/>
+      <input type="text" placeholder="Assignee" id="new-issue-assignee" value={newAssignee} onChange={e=> setNewAssignee(e.target.value)}/>
+
+      <button onClick={() => addIssue(newTitle,newAssignee, "med")}>Add Issue</button>
+    </div>
     <div
       style={{
         display: "flex",

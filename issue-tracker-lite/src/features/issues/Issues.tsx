@@ -14,6 +14,10 @@ export function IssueCard({ issue, onMove, onDelete }: IssueCardProps) {
         padding: "8px",
         borderRadius: "6px",
         marginBottom: "8px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent:"center",
+        alignItems:"center",
       }}
     >
       <h4>{issue.title}</h4>
