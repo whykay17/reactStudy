@@ -13,18 +13,18 @@ function App() {
 
   return (
     <>
-      <header className="bg-blue-600 text-white p-4 shadow-lg flex justify-between items-center">
-        <h1 className="text-2xl font-bold">SkillHub Lite</h1>
-      </header>
+      <Navbar/>
       <main className="flex justify-center items-center p-8 h-screen">
         <Routes>
           <Route path="/" element = {GigListPage()} />
           <Route path="/login" element = {<LoginPage />} />
 
-          <Route path="/gigs/:id" element = {GigDetailPage()} />
+          <Route path="/gigs/:id" element={<GigDetailPage />} />
 
-          <Route path="/dashboard" element = {ProviderDashboard()} />
-          <Route path="/settings" element= {SettingsPage()} />
+          <Route element={<ProtectedRoute requiredRole='freelancer' />}>
+            <Route path="/dashboard" element={<ProviderDashboard/>} />
+            <Route path="/settings" element={<SettingsPage/>} />
+          </Route>
 
           <Route path="*" element={<h1>404 - Not Found</h1>} />
         </Routes>
