@@ -9,3 +9,11 @@ export type AuthContextType = {
     login: (name:string) => void;
     logout: () => void;
 }
+
+export type Gig = {
+    id:string;
+    title:string;
+    price:number;
+    freelancerId:string;
+    description:string;
+}
