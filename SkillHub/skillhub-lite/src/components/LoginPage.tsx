@@ -28,7 +28,7 @@ function LoginPage (){
 
     return (
         <div className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg">
-            <h2 className="text-2xl font-bold mb-4">SkillHub Lite Login</h2>
+            <h2 className="text-2xl font-bold mb-4 text-gray-800">SkillHub Lite Login</h2>
             <p className="mb-4 text-sm text-gray-600">
                 Try logging in as: <span className="font-semibold text-blue-600">freelancer</span> or anything else for <span className="font-semibold text-green-600">client</span>.
             </p>
@@ -38,7 +38,7 @@ function LoginPage (){
                     type="text"
                     value={username}
                     placeholder="Enter your name"
-                    className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
                 />
                 <button
                     type="submit"
