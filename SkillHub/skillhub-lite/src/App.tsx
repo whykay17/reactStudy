@@ -3,8 +3,10 @@ import { Route, Routes } from 'react-router-dom';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import LoginPage from './components/LoginPage';
+import GigListPage from './features/gigs/GigListPage';
+import Navbar from './components/navbar';
+import { ProtectedRoute } from './components/protectedRoute';
 
-const GigListPage = () => <h1>Gig List (Public)</h1>;
 const GigDetailPage = () => <h1>Gig Detail (Public with Params)</h1>;
 const ProviderDashboard = () => <h1>Provider Dashboard (Protected)</h1>;
 const SettingsPage = () => <h1>Settings (Protected)</h1>;
@@ -16,8 +18,8 @@ function App() {
       <Navbar/>
       <main className="flex justify-center items-center p-8 h-screen">
         <Routes>
-          <Route path="/" element = {GigListPage()} />
-          <Route path="/login" element = {<LoginPage />} />
+          <Route path="/" element={<GigListPage />} />
+          <Route path="/login" element={<LoginPage />} />
 
           <Route path="/gigs/:id" element={<GigDetailPage />} />
 

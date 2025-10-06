@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react"
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react"
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from "../hooks/useAuth";
 
 function LoginPage (){
@@ -7,12 +7,6 @@ function LoginPage (){
     const [username, setUsername] = useState("");
     const navigate = useNavigate();
     const auth = useAuth();
-
-    useEffect(() => {
-        if (auth.user) {
-            navigate('/');
-        }
-    }, [auth.user, navigate]);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -23,7 +17,7 @@ function LoginPage (){
     }
 
     if (auth.user) {
-        return null;
+        return <Navigate to="/" replace />;
     }
 
     return (
