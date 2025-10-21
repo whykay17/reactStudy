@@ -21,8 +21,8 @@ function GigListPage() {
         );
     }
 
-    return<div className="p8">
-        <h1 className="text-3xl font-extrabold mb-6 text-gray-800">
+    return<div className="p8 flex flex-col h-full">
+        <h1 className="text-3xl font-extrabold text-gray-800 text-center p-8">
             Available Gigs ({gigs?.length || 0})
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

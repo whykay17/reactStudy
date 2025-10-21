@@ -13,7 +13,7 @@ function Navbar() {
     };
 
     return (
-        <header className="bg-gray-800 text-white p-4 flex justify-between items-center shadow-lg">
+        <header className="sticky top-0 bg-gray-800 text-white p-4 flex justify-between items-center shadow-lg">
             <Link to="/" className="text-2xl font-bold">SkillHub Lite</Link>
             <nav className="flex space-x-4 items-center">
                 {user ? (

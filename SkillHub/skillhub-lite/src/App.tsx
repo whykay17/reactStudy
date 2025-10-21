@@ -14,9 +14,9 @@ const SettingsPage = () => <h1>Settings (Protected)</h1>;
 function App() {
 
   return (
-    <>
+    <div className="h-screen bg-gray-100 flex flex-col">
       <Navbar/>
-      <main className="flex justify-center items-center p-8 h-screen">
+      <main className="flex justify-center items-center p-8 h-full">
         <Routes>
           <Route path="/" element={<GigListPage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -33,7 +33,7 @@ function App() {
       </main>
 
       <ReactQueryDevtools initialIsOpen={false} />
-    </>
+    </div>
   )
 }
 
